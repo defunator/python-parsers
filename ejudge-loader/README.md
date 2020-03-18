@@ -1,0 +1,1 @@
+Loads all your solutions from ejudge.
