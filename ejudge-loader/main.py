@@ -87,11 +87,10 @@ for row in table[0].getchildren()[0].getchildren()[1:]:
         os.remove(f'./{root_dir}/{directory}/archive.gz')
 
     else:
-        with open(f'./{root_dir}/{directory}/{file_name}', 'w') as f:
+        with open(f'./{root_dir}/{directory}/{file_name}', 'wb') as f:
             code_url = f'https://caos.ejudge.ru/ej/client/download-run/S{SID}?run_id={run_id}'
             code_resp = req_session.get(code_url, headers=dict(referer=code_url))
-            code_soup = BeautifulSoup(code_resp.content, 'html.parser')
-            f.write(code_soup.prettify())
+            f.write(code_resp.content)
 
     with open(f'./{root_dir}/{directory}/README.md', 'w') as f:
         status = run_id_data[run_id][1]
